@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: authorization-service
+#  jackson:
+#    default-property-inclusion: non_null
+logging:
+  level:
+    org:
+      springframework:
+        ws: INFO

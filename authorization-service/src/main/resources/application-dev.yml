@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://10.60.105.37:8920/bccs3_thiennv15?zeroDateTimeBehavior=convertToNull
+    driverClassName: org.mariadb.jdbc.Driver
+    username: db_cluster
+    password: bccs3_maria
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 3
+oauth:
+  properties:
+    default-access-token-timeout: 3600
+    default-refresh-token-timeout: 86400
+    secret-key: test

@@ -1,0 +1,70 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://10.60.105.37:8920/bccs3_thiennv15?zeroDateTimeBehavior=convertToNull
+    driverClassName: org.mariadb.jdbc.Driver
+    username: db_cluster
+    password: bccs3_maria
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 3
+      pool-name: chatting-pool
+      max-lifetime: 600000
+
+security:
+  oauth2:
+    client:
+      clientId: saga
+      clientSecret: bccs3
+      accessTokenUri: http://localhost:8080/oauth/token
+      grantType: client_credentials
+    resource:
+      jwt:
+        id: chatting
+        key-value: -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqMl9i31XriIEHSUIvjQR
+          VCZcngPIrJbK7qtP6XHWr7tFwGCX/eNmYkc8xSktikNZ+/sc5+6geUpX1QkqG+MN
+          zvfBUPIrEPRZUbg0LHFDVGqTWw6zx2aGUKoq9vOplAH4DHN8N9P1YH3/kWzbpLv9
+          YWr3czprAfecSEJo15pnqF7UpB0PyeWY9FKDMCcQWnLeULffCSr21QeA3ki9Ozco
+          srWKiakPeDP9BSUnKELh3AUTSOtcu4UMad63QGQKF3UGEGsHmGM5kMYmfTEs2Il9
+          TJcEJ+S5D/oTacz2AnKGWnWcZrqDaVSTV+ctH6xOaK4iKivI40FSTaZx5L2RkKiX
+          HwIDAQAB
+          -----END PUBLIC KEY-----
+      whitelist: /test/**,/actuator
+
+websocket:
+  brokerType: RELAY
+  relayHost: 10.60.105.38
+  relayPort: 8613
+
+server:
+  port: 8081
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: TRACE
+#        ws:
+#          client:
+#            MessageTracing:
+#              sent: TRACE
+#              received: TRACE
+#          server:
+#            MessageTracing:
+#              sent: TRACE
+#              received: TRACE

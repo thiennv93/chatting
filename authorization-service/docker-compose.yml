@@ -1,0 +1,13 @@
+version: "3"
+services:
+  authorization-service:
+    image: authorization-service:1.0
+    ports:
+      - "8088:8761"
+    networks:
+      - movitel
+    environment:
+      SPRING_APPLICATION_NAME: "authorization-service"
+      SERVER_PORT: "8761"
+      SPRING_PROFILES_ACTIVE: "dev"
+      replicas: 1
